@@ -1,0 +1,23 @@
+{
+  "name": "laboratory-brain",
+  "version": "1.0.0",
+  "description": "Eletron application to manage a dental prothesis laboratory",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "electron ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/LuuisGouveia/LaboratoryBrain.git"
+  },
+  "author": "Luís Gouveia",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/LuuisGouveia/LaboratoryBrain/issues"
+  },
+  "homepage": "https://github.com/LuuisGouveia/LaboratoryBrain#readme",
+  "devDependencies": {
+    "electron": "^33.2.1"
+  }
+}
