@@ -28,7 +28,12 @@ app.on("window-all-closed", () => {
 
 db.init();
 
-ipcMain.handle("add", async (event, query, json) => {
-  console.log(query, json);
-  await db.add(query, json);
+ipcMain.handle("add", async (event, query, params) => {
+  console.log(query, params);
+  await db.add(query, params);
+});
+
+ipcMain.handle("remove", async (event, query, params) => {
+  console.log(query, params);
+  await db.remove(query, params);
 });

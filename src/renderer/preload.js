@@ -12,7 +12,10 @@ window.addEventListener("DOMContentLoaded", () => {
 const { contextBridge, ipcRenderer } = require("electron");
 
 contextBridge.exposeInMainWorld("api", {
-  add: async (query, json) => {
-    return await ipcRenderer.invoke("add", query, json);
+  add: async (query, params) => {
+    return await ipcRenderer.invoke("add", query, params);
+  },
+  remove: async (query, params) => {
+    return await ipcRenderer.invoke("remove", query, params);
   },
 });

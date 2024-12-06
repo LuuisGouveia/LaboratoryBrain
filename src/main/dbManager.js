@@ -70,20 +70,23 @@ class DataBaseManager {
     );
   }
 
-  add(query, json) {
-    const data = JSON.parse(json);
-    console.log(
-      data.name,
-      data.address,
-      data.contact,
-      data.dentist_list,
-      data.joblist_id
-    );
-    this.db.run(query, [...data], (err) => {
+  add(query, params) {
+    console.log(params);
+    this.db.run(query, params, (err) => {
       if (err) {
         console.log("Erro ao inserir dados no DB: ", err);
       } else {
         console.log("Dados inseridos no DB com sucesso!");
+      }
+    });
+  }
+  remove(query, params) {
+    console.log(params);
+    this.db.run(query, params, (err) => {
+      if (err) {
+        console.log("Erro ao remover dados: ", err);
+      } else {
+        console.log("Dados removidos do DB com sucesso!");
       }
     });
   }
