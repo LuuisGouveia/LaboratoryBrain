@@ -26,6 +26,9 @@ app.on("window-all-closed", () => {
   if (process.platform !== "darwin") app.quit();
 });
 
+db.init();
+
 ipcMain.handle("add", async (event, query, json) => {
   console.log(query, json);
+  await db.add(query, json);
 });

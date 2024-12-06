@@ -1,15 +1,12 @@
 import { Client } from "../entities/Client.js";
+import { ClientController } from "../controllers/ClientController.js";
 
-let name = "josé";
-let address = "rua qualquer, 156";
-let contact = 16992999191;
+let name = "joana";
+let address = "rua batata, 123";
+let contact = 16992998181;
 
 const cliente = new Client(name, address, contact);
 
-async function add(cliente) {
-  const query = "INSERT INTO clients VALUES (?, ?, ?, ?)";
-  const json = JSON.stringify(cliente);
-  await window.api.add(query, json);
-}
+ClientController.add(cliente);
 
 add(cliente);
