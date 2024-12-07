@@ -18,4 +18,10 @@ contextBridge.exposeInMainWorld("api", {
   remove: async (query, params) => {
     return await ipcRenderer.invoke("remove", query, params);
   },
+  show: async (query) => {
+    return await ipcRenderer.invoke("show", query);
+  },
+  edit: async (query, params) => {
+    return await ipcRenderer.invoke("edit", query, params);
+  },
 });

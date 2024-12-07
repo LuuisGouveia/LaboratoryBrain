@@ -18,7 +18,7 @@ class DataBaseManager {
     address TEXT,
     contact INTEGER,
     dentist_list TEXT,
-    joblist_id INTEGER
+    joblist_name TEXT
     )`,
       (err) => {
         if (err) {
@@ -87,6 +87,28 @@ class DataBaseManager {
         console.log("Erro ao remover dados: ", err);
       } else {
         console.log("Dados removidos do DB com sucesso!");
+      }
+    });
+  }
+  show(query) {
+    console.log(query);
+    return new Promise((resolve, reject) => {
+      this.db.all(query, [], (err, rows) => {
+        if (err) {
+          reject(err);
+        } else {
+          resolve(rows);
+        }
+      });
+    });
+  }
+  edit(query, params) {
+    console.log(query, params);
+    this.db.run(query, params, (err) => {
+      if (err) {
+        console.log("Erro ao atualizar dados.", err);
+      } else {
+        console.log("Dados atualizados com sucesso.");
       }
     });
   }

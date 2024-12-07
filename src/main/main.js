@@ -37,3 +37,13 @@ ipcMain.handle("remove", async (event, query, params) => {
   console.log(query, params);
   await db.remove(query, params);
 });
+
+ipcMain.handle("show", async (event, query) => {
+  console.log(query);
+  return await db.show(query);
+});
+
+ipcMain.handle("edit", async (event, query, params) => {
+  console.log(query, params);
+  await db.edit(query, params);
+});
