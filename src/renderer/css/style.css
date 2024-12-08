@@ -49,21 +49,24 @@ select {
 select:focus {
   border: 2px solid var(--second-color);
 }
-nav {
+.nav {
   display: flex;
   flex-direction: column;
+  background-color: var(--bg-color);
   height: calc(100dvh - 5rem);
   width: 28dvw;
   justify-content: center;
   gap: 30px;
   border: 2px solid var(--box-color);
   border-radius: 30px;
-  transform: translateX(-100dvw);
+  transform: translateX(-30dvw);
   position: absolute;
   transition: 1s;
+  left: 1dvw;
 }
 .menu {
-  transform: translateX(100dvw);
+  transform: translateX(1dvw);
+  left: 0.2dvw;
 }
 
 .btn-nav a {
@@ -183,7 +186,11 @@ option {
   padding-top: 50px;
 }
 
-@media (max-width: 650px) {
+#selectClientTable {
+  border: 2px solid var(--second-color);
+}
+
+@media (max-width: 800px) {
   section {
     flex-direction: column;
   }
@@ -193,6 +200,13 @@ option {
   }
   #content {
     width: 100dvw;
+  }
+  .menu {
+    top: 30dvw;
+    right: 3dvw;
+    width: 50dvw;
+    left: 30dvw;
+    height: calc(100dvw - 10rem);
   }
 }
 
@@ -215,4 +229,10 @@ table tr th {
 table td {
   border: 1px solid var(--second-color);
   margin: 15px;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
 }
