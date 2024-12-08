@@ -24,4 +24,19 @@ contextBridge.exposeInMainWorld("api", {
   edit: async (query, params) => {
     return await ipcRenderer.invoke("edit", query, params);
   },
+  new: async (query) => {
+    return await ipcRenderer.invoke("new", query);
+  },
+  addJob: async (query, params) => {
+    return await ipcRenderer.invoke("add-job", query, params);
+  },
+  removeJob: async (query, params) => {
+    return await ipcRenderer.invoke("remove-job", query, params);
+  },
+  showJob: async (query) => {
+    return await ipcRenderer.invoke("show-job", query);
+  },
+  editJob: async (query, params) => {
+    return await ipcRenderer.invoke("edit-job", query, params);
+  },
 });

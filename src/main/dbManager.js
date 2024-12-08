@@ -112,6 +112,16 @@ class DataBaseManager {
       }
     });
   }
+  new(query) {
+    console.log(query);
+    this.db.run(query, (err) => {
+      if (err) {
+        console.log("Erro ao criar tabela de preços.", err);
+      } else {
+        console.log("tabela criada com sucesso");
+      }
+    });
+  }
 }
 
 module.exports = DataBaseManager;

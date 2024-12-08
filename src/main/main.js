@@ -47,3 +47,28 @@ ipcMain.handle("edit", async (event, query, params) => {
   console.log(query, params);
   await db.edit(query, params);
 });
+
+ipcMain.handle("new", async (event, query) => {
+  console.log(query);
+  await dbJOB.new(query);
+});
+
+ipcMain.handle("add-job", async (event, query, params) => {
+  console.log(query, params);
+  await dbJOB.add(query, params);
+});
+
+ipcMain.handle("remove-job", async (event, query, params) => {
+  console.log(query, params);
+  await dbJOB.remove(query, params);
+});
+
+ipcMain.handle("show-job", async (event, query) => {
+  console.log(query);
+  return await dbJOB.show(query);
+});
+
+ipcMain.handle("edit-job", async (event, query, params) => {
+  console.log(query, params);
+  await dbJOB.edit(query, params);
+});
