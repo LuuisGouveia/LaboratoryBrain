@@ -1,9 +1,9 @@
 export class Client {
-  constructor(name, address, contact, dentistList, jobList_name) {
+  constructor(name, address, contact, dentist_list, joblist_name) {
     this.name = name;
     this.address = address;
     this.contact = contact;
-    this.dentistList = dentistList;
-    this.jobList_name = jobList_name;
+    this.dentist_list = dentist_list;
+    this.joblist_name = joblist_name;
   }
 }

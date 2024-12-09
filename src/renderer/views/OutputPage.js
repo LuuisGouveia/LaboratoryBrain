@@ -1,6 +1,3 @@
-import { Client } from "../entities/Client.js";
-import { ClientController } from "../controllers/ClientController.js";
-
 export class ClientPage {
   static html() {
     const template = `
@@ -35,16 +32,6 @@ export class ClientPage {
     return template;
   }
 
-  static dentistPlus() {
-    const dentistbtn = document.getElementById("dentist-btn");
-    const dentist = document.getElementById("dentist");
-    dentistbtn.addEventListener("click", () => {
-      const input = document.createElement("input");
-      input.className = "dentist_list";
-      dentist.appendChild(input);
-    });
-  }
-
   static submit() {
     document.getElementById("form").addEventListener("submit", (event) => {
       event.preventDefault();
@@ -64,17 +51,5 @@ export class ClientPage {
       console.log(client);
       ClientController.add(client);
     });
-  }
-  static dentistList() {
-    const dentistList = document.getElementsByClassName("dentist_list");
-    const dentist_list = {};
-    for (let i = 0; i < dentistList.length; i++) {
-      dentist_list[i + 1] = dentistList[i].value;
-    }
-    return dentist_list;
-  }
-  static object() {
-    const obj = this.submit();
-    return obj;
   }
 }

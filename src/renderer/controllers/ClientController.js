@@ -5,7 +5,13 @@ export class ClientController {
   static async add(client) {
     const query =
       "INSERT INTO clients (name, address, contact, dentist_list, joblist_name) VALUES (?, ?, ?, ?, ?)";
-    const params = [client.name, client.address, client.contact];
+    const params = [
+      client.name,
+      client.address,
+      client.contact,
+      client.dentist_list,
+      client.joblist_name,
+    ];
     await window.api.add(query, params);
   }
   static async remove(client_id) {

@@ -20,4 +20,5 @@ clientBtn.addEventListener("click", () => {
   content.innerHTML = "";
   content.innerHTML = ClientPage.html();
   ClientPage.dentistPlus();
+  ClientPage.submit();
 });
