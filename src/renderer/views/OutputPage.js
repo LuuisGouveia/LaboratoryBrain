@@ -1,33 +1,41 @@
-export class ClientPage {
+export class OutputPage {
   static html() {
     const template = `
-        <form action="#" method="POST" id="form" class="form">
-          <div class="form-comp">
-            <label for="name"> Nome: </label>
-            <input type="text" id="name" />
-          </div>
-          <div class="form-comp">
-            <label for="address"> Endereço: </label>
-            <input type="text" id="address" />
-          </div>
-          <div class="form-comp">
-            <label for="contact"> Contato: </label>
-            <input type="text" id="contact" />
-          </div>
-          <div>
-            <label for="">Dentistas Conveniados:</label>
-            <button type="button" class="btn" id="dentist-btn">
-              +Dentista
-            </button>
-          </div>
-          <div class="form-comp" id="dentist"></div>
-          <div class="form-comp">
-            <label for="joblist_name"> Nome da Tabela: </label>
-            <input type="text" id="joblist_name" />
-          </div>
-          <div>
-            <button type="submit" class="btn" id="form-btn">Cadastrar</button>
-          </div>
+        <form class="form" id="form">
+      <div class="form-comp">
+        <select name="clients" id="clients">
+          <option value="0">Selecione o Cliente...</option>
+        </select>
+      </div>
+      <div class="form-comp"><span> ID do cliente: 1 </span></div>
+      <div class="form-comp">
+        <select name="dentists" id="dentists">
+          <option value="0">Selecione o Dentista...</option>
+        </select>
+      </div>
+      <div class="form-comp">
+        <select name="jobs" id="jobs">
+          <option value="0">Selecione o Trabalho...</option>
+        </select>
+      </div>
+      <div class="form-comp">
+        <label for="additional">Adicional:</label>
+        <input id="additional" type="text" />
+        <input id="additional-price" type="number" step="0.01"/>
+      </div>
+      <div class="form-comp">
+        <label for="pacient">Paciente:</label>
+        <input id="pacient" type="text" placeholder="Paciente" />
+      </div>
+      <div class="form-comp">
+        <label for="quantity">Quantidade:</label>
+        <input id="quantity" type="number" />
+      </div>
+      <div class="form-comp"><span> Valor Unitário: R$ 0,00 </span></div>
+      <div class="form-comp"><span> Valor Total: R$ 0,00 </span></div>
+      <div class="form-comp">
+        <label for="date">Data:</label> <input id="date" type="date" />
+      </div>
     </form>`;
     return template;
   }
@@ -40,16 +48,6 @@ export class ClientPage {
       const contact = document.getElementById("contact").value;
       const dentist_list = JSON.stringify(this.dentistList());
       const joblist_name = document.getElementById("joblist_name").value;
-
-      const client = new Client(
-        name,
-        address,
-        contact,
-        dentist_list,
-        joblist_name
-      );
-      console.log(client);
-      ClientController.add(client);
     });
   }
 }

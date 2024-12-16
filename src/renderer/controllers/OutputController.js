@@ -4,17 +4,21 @@ export class OutuputController {
     client_name,
     dentist,
     pacient,
-    job, 
+    job,
+    additional,
+    additional_price, 
     quantity,
     price,
     total,
-    date)  VALUES (?,?,?,?,?,?,?,?,?)`;
+    date)  VALUES (?,?,?,?,?,?,?,?,?,?,?)`;
     const params = [
       output.client_id,
       output.client_name,
       output.dentist,
       output.pacient,
       output.job,
+      output.addiotional,
+      output.additional_price,
       output.quantity,
       output.price,
       output.total,

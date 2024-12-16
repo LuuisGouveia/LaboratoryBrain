@@ -73,8 +73,4 @@ export class ClientPage {
     }
     return dentist_list;
   }
-  static object() {
-    const obj = this.submit();
-    return obj;
-  }
 }
