@@ -7,6 +7,8 @@ import { OutuputController } from "../controllers/OutputController.js";
 import { NoteController } from "../controllers/NoteController.js";
 import { JobController } from "../controllers/JobController.js";
 import { ClientPage } from "../views/ClientPage.js";
+import { OutputPage } from "../views/OutputPage.js";
+
 const menuBtn = document.getElementById("menu-btn");
 menuBtn.addEventListener("click", () => {
   const menu = document.getElementById("nav");
@@ -22,3 +24,13 @@ clientBtn.addEventListener("click", () => {
   ClientPage.dentistPlus();
   ClientPage.submit();
 });
+
+console.log(ClientController.show());
+// const outputBtn = document.getElementById("newOutput");
+// outputBtn.addEventListener("click", () => {
+//   content.innerHTML = "";
+//   content.innerHTML = OutputPage.html();
+//   OutputPage.loadSelectClients();
+//   OutputPage.loadSelectJobs();
+//   OutputPage.submit();
+// });

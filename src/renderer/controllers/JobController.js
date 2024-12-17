@@ -32,4 +32,11 @@ export class JobController {
     const query = `UPDATE ${joblist_name} SET ${updates} WHERE id = ?`;
     await window.api.editJob(query, params);
   }
+  static async showAll() {
+    const query = `SELECT name 
+    FROM sqlite_master 
+    WHERE type = 'table' AND name NOT LIKE 'sqlite_%';`;
+    const params = await window.api.showJob(query);
+    return params;
+  }
 }

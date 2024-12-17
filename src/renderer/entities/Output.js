@@ -5,6 +5,8 @@ export class Output {
     dentist,
     pacient,
     job,
+    additional,
+    additional_price,
     quantity,
     price,
     total,
@@ -15,6 +17,8 @@ export class Output {
     this.dentist = dentist;
     this.pacient = pacient;
     this.job = job;
+    this.additional = additional;
+    this.additional_price = additional_price;
     this.quantity = quantity;
     this.price = price;
     this.total = total;
