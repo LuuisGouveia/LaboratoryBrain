@@ -25,7 +25,7 @@ export class OutputPage {
       </div>
       <div class="form-comp">
         <label for="additional">Adicional:</label>
-        <input id="additional" type="text" />
+        <input id="additional" type="text" placeholder="Descrição do adicional" />
         <input id="additional-price" type="number" step="0.01"/>
       </div>
       <div class="form-comp">
@@ -39,8 +39,12 @@ export class OutputPage {
       <div class="form-comp"><span id="price"></span></div>
       <div class="form-comp"><span id="total"></span></div>
       <div class="form-comp">
-        <label for="date">Data:</label> <input id="date" type="date" />
+        <label for="date">Data:</label> <input id="date" type="date" placeholder="Data" />
       </div>
+      <div class="form-comp">
+        <button type="submit" class="btn">Cadastrar</button>
+      </div>
+      
     </form>`;
     return template;
   }
@@ -71,6 +75,7 @@ export class OutputPage {
     const jobs = await JobController.show(joblist_name);
     const selectJobs = document.getElementById("jobs");
     const quantity = document.getElementById("quantity");
+    const additional_price = document.getElementById("additional-price");
     jobs.forEach((job) => {
       const option = document.createElement("option");
       option.value = job.price;
@@ -85,12 +90,24 @@ export class OutputPage {
         selectedOptionJobs.value
       )}</p>`;
     });
+    additional_price.addEventListener("input", () => {
+      const selectedIndexJobs = selectJobs.selectedIndex;
+      const selectedOptionJobs = selectJobs.options[selectedIndexJobs];
+      const additional = document.getElementById("additional-price").value;
+      const spanPrice = document.getElementById("price");
+      const price =
+        parseFloat(selectedOptionJobs.value) + parseFloat(additional);
+      spanPrice.innerHTML = `<p>Valor unitário: ${parseFloat(price)}`;
+    });
     quantity.addEventListener("input", () => {
       const selectedIndexJobs = selectJobs.selectedIndex;
       const selectedOptionJobs = selectJobs.options[selectedIndexJobs];
+      const additional = document.getElementById("additional-price").value;
+      const price =
+        parseFloat(selectedOptionJobs.value) + parseFloat(additional);
       const spanTotal = document.getElementById("total");
       spanTotal.innerHTML = `<p>Valor Total: ${parseFloat(
-        selectedOptionJobs.value * quantity.value
+        price * quantity.value
       )}</p>`;
     });
   }
@@ -132,7 +149,8 @@ export class OutputPage {
         document.getElementById("additional-price").value;
       const pacient = document.getElementById("pacient").value;
       const quantity = document.getElementById("quantity").value;
-      const price = parseFloat(selectedOptionJobs.value);
+      const price =
+        parseFloat(selectedOptionJobs.value) + parseFloat(additional_price);
       const total = parseFloat(quantity * price);
       const date = document.getElementById("date").value;
 
@@ -149,7 +167,7 @@ export class OutputPage {
         total,
         date
       );
-      OutuputController.add(output);
+      console.log(output);
     });
   }
 }
