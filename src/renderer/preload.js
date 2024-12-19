@@ -39,4 +39,7 @@ contextBridge.exposeInMainWorld("api", {
   editJob: async (query, params) => {
     return await ipcRenderer.invoke("edit-job", query, params);
   },
+  get: async (query) => {
+    return await ipcRenderer.invoke("get", query);
+  },
 });

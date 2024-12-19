@@ -25,12 +25,15 @@ clientBtn.addEventListener("click", () => {
   ClientPage.submit();
 });
 
-console.log(ClientController.show());
-// const outputBtn = document.getElementById("newOutput");
-// outputBtn.addEventListener("click", () => {
-//   content.innerHTML = "";
-//   content.innerHTML = OutputPage.html();
-//   OutputPage.loadSelectClients();
-//   OutputPage.loadSelectJobs();
-//   OutputPage.submit();
+// JobController.add("carlos", {
+//   description: "coroa metaloceramica",
+//   price: parseFloat(200.0),
 // });
+
+const outputBtn = document.getElementById("newOutput");
+outputBtn.addEventListener("click", () => {
+  content.innerHTML = "";
+  content.innerHTML = OutputPage.html();
+  OutputPage.loadSelectClients();
+  OutputPage.submit();
+});

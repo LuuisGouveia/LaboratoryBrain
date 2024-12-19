@@ -124,6 +124,18 @@ class DataBaseManager {
       }
     });
   }
+  get(query) {
+    console.log("DB:", query);
+    return new Promise((resolve, reject) => {
+      this.db.get(query, [], (err, row) => {
+        if (err) {
+          reject(err);
+        } else {
+          resolve(row);
+        }
+      });
+    });
+  }
 }
 
 module.exports = DataBaseManager;

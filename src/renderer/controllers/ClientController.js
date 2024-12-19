@@ -34,4 +34,9 @@ export class ClientController {
     const query = `UPDATE clients SET ${updates} WHERE id = ?`;
     await window.api.edit(query, params);
   }
+  static async get(field, client_id) {
+    const query = `SELECT ${field} FROM clients WHERE id = ${client_id}`;
+    const params = await window.api.get(query);
+    return params;
+  }
 }

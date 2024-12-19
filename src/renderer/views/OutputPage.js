@@ -48,40 +48,55 @@ export class OutputPage {
   static async loadSelectClients() {
     const clients = await ClientController.show();
     const selectClients = document.getElementById("clients");
+
     clients.forEach((client) => {
       const optionClient = document.createElement("option");
       optionClient.value = client.id;
       optionClient.text = client.name;
       selectClients.appendChild(optionClient);
-      const dentist = JSON.parse(client.dentist);
-      this.loadSelectDentists(dentist);
-      this.loadSelectJobs(client.joblist_name);
-      const spanID = document.getElementById("client_id");
-      spanID.innerHTML = `<p>ID do cliente: ${client.id}</p>`;
+    });
+    selectClients.addEventListener("change", async (event) => {
+      const selectedOption = selectClients.options[selectClients.selectedIndex];
+      const selectedValue = selectedOption.value;
+      const dentist_list = "dentist_list";
+      const joblist_name = "joblist_name";
+      const dentist = await ClientController.get(dentist_list, selectedValue);
+      const joblist = await ClientController.get(joblist_name, selectedValue);
+      this.loadSelectDentists(JSON.parse(dentist.dentist_list));
+      this.loadSelectJobs(joblist.joblist_name);
     });
   }
 
   static async loadSelectJobs(joblist_name) {
     const jobs = await JobController.show(joblist_name);
     const selectJobs = document.getElementById("jobs");
+    const quantity = document.getElementById("quantity");
     jobs.forEach((job) => {
       const option = document.createElement("option");
       option.value = job.price;
       option.text = job.description;
       selectJobs.appendChild(option);
     });
-    const selectedIndexJobs = selectJobs.selectedIndex;
-    const selectedOptionJobs = selectJobs.options[selectedIndexJobs];
-    const spanPrice = document.getElementById("price");
-    spanPrice.innerHTML = `<p>Valor unitário: ${selectedOptionJobs.value}</p>`;
-    const quantity = document.getElementById("quantity").value;
-    const spanTotal = document.getElementById("total");
-    spanTotal.innerHTML = `<p>Valor Total: ${
-      selectedOptionJobs.value * quantity
-    }</p>`;
+    selectJobs.addEventListener("change", () => {
+      const selectedIndexJobs = selectJobs.selectedIndex;
+      const selectedOptionJobs = selectJobs.options[selectedIndexJobs];
+      const spanPrice = document.getElementById("price");
+      spanPrice.innerHTML = `<p>Valor unitário: ${parseFloat(
+        selectedOptionJobs.value
+      )}</p>`;
+    });
+    quantity.addEventListener("input", () => {
+      const selectedIndexJobs = selectJobs.selectedIndex;
+      const selectedOptionJobs = selectJobs.options[selectedIndexJobs];
+      const spanTotal = document.getElementById("total");
+      spanTotal.innerHTML = `<p>Valor Total: ${parseFloat(
+        selectedOptionJobs.value * quantity.value
+      )}</p>`;
+    });
   }
 
   static loadSelectDentists(dentist) {
+    console.log(dentist);
     const selectDentists = document.getElementById("dentists");
     for (const key in dentist) {
       const dentist_name = dentist[key];

@@ -72,3 +72,8 @@ ipcMain.handle("edit-job", async (event, query, params) => {
   console.log(query, params);
   await dbJOB.edit(query, params);
 });
+
+ipcMain.handle("get", async (event, query) => {
+  console.log("Main:", query);
+  return await db.get(query);
+});
